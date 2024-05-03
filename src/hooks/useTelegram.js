@@ -1,9 +1,8 @@
-import React from "react";
+const tg = window.Telegram.WebApp;
 
-export function useTelegram() {
-  const tg = window.Telegram.WebApp;
+export const useTelegram = () => {
   const onClose = () => {
-    tg.close;
+    tg.close();
   };
 
   const onToggleButton = () => {
@@ -19,4 +18,4 @@ export function useTelegram() {
     tg,
     user: tg.initDataUnsafe?.user,
   };
-}
+};
