@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./Form.css";
 import { useTelegram } from "../../hooks/useTelegram";
 
@@ -7,7 +7,23 @@ const Form = () => {
   const [city, setCity] = useState("");
   const [subject, setSubject] = useState("physical");
   const { tg } = useTelegram();
-  const [test, setTest] = useState("");
+
+  const onSendData = useCallback(() => {
+    const data = {
+      country,
+      city,
+      subject,
+    };
+
+    tg.sendData(JSON.stringify(data));
+  }, []);
+
+  useEffect(() => {
+    tg.onEvent("mainButtonClicked", onSendData);
+    return () => {
+      tg.offEvent("mainButtonClicked", onSendData);
+    };
+  }, []);
 
   const onChangeCountry = (e) => {
     setCountry(e.target.value);
@@ -27,10 +43,8 @@ const Form = () => {
 
   useEffect(() => {
     if (country && city) {
-      setTest("show");
       tg.MainButton.show();
     } else {
-      setTest("hide");
       tg.MainButton.hide();
     }
   }, [country, city]);
@@ -38,7 +52,6 @@ const Form = () => {
   return (
     <div className="form">
       <h3>Введите ваши данные</h3>
-      <p>{test}</p>
       <input
         className="input"
         type="text"
