@@ -6,8 +6,6 @@ export const useTelegram = () => {
   };
 
   const onToggleButton = () => {
-    console.log(tg.initDataUnsafe, tg.initDataUnsafe?.user);
-    console.log(tg.MainButton.isVisible);
     if (tg.MainButton.isVisible) {
       tg.MainButton.show();
     } else {
