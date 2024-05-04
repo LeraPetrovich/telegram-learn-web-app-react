@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ProductsList.css";
+import "./ProductList.css";
 import ProductItem from "../ProductItem/ProductItem";
 import { useTelegram } from "../../hooks/useTelegram";
 
@@ -93,12 +93,14 @@ const ProductList = () => {
   return (
     <div className="list">
       {products.map((item) => {
-        <ProductItem
-          product={item}
-          onAdd={onAdd}
-          className={"item"}
-          key={item.id}
-        />;
+        return (
+          <ProductItem
+            product={item}
+            onAdd={onAdd}
+            className={"item"}
+            key={item.id}
+          />
+        );
       })}
     </div>
   );
