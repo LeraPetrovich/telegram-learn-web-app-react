@@ -35,7 +35,7 @@ const Form = () => {
   return (
     <div className="form">
       <h3>Введите ваши данные</h3>
-      <p>{tg.MainButton}</p>
+      <p>{tg.MainButton ? "true" : "false"}</p>
       <input
         className="input"
         type="text"
