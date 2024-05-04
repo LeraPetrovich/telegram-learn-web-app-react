@@ -7,6 +7,7 @@ const Form = () => {
   const [city, setCity] = useState("");
   const [subject, setSubject] = useState("physical");
   const { tg } = useTelegram();
+  const [test, setTest] = useState("");
 
   const onChangeCountry = (e) => {
     setCountry(e.target.value);
@@ -26,8 +27,10 @@ const Form = () => {
 
   useEffect(() => {
     if (country || !city) {
+      setTest("hide");
       tg.MainButton.hide();
     } else {
+      setTest("show");
       tg.MainButton.show();
     }
   }, [country, city]);
@@ -35,7 +38,7 @@ const Form = () => {
   return (
     <div className="form">
       <h3>Введите ваши данные</h3>
-      <p>{tg.MainButton ? "true" : "false"}</p>
+      <p>{test}</p>
       <input
         className="input"
         type="text"
