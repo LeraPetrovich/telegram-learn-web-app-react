@@ -8,13 +8,22 @@ const Form = () => {
   const [subject, setSubject] = useState("physical");
   const { tg } = useTelegram();
 
+  //   const onSendData = useCallback(() => {
+  //     const data = {
+  //       country,
+  //       city,
+  //       subject,
+  //     };
+
+  //     tg.sendData(JSON.stringify(data));
+  //   }, [country, city, subject]);
+
   const onSendData = useCallback(() => {
     const data = {
       country,
       city,
       subject,
     };
-
     tg.sendData(JSON.stringify(data));
   }, [country, city, subject]);
 
