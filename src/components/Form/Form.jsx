@@ -26,12 +26,12 @@ const Form = () => {
   }, []);
 
   useEffect(() => {
-    if (country || !city) {
-      setTest("hide");
-      tg.MainButton.hide();
-    } else {
+    if (country && city) {
       setTest("show");
       tg.MainButton.show();
+    } else {
+      setTest("hide");
+      tg.MainButton.hide();
     }
   }, [country, city]);
 
