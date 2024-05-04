@@ -66,7 +66,7 @@ const ProductList = () => {
   const { tg } = useTelegram();
 
   const getTotalPrice = (items = []) => {
-    items.reduce((acc, item) => {
+    return items.reduce((acc, item) => {
       return (acc += item.price);
     }, 0);
   };
