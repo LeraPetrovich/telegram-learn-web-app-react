@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Form.css";
-import { useTelegram } from "../../hooks/useTelegram";
+// import { useTelegram } from "../../hooks/useTelegram";
+const tg = window.Telegram.WebApp;
 
 const Form = () => {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [subject, setSubject] = useState("physical");
-  const { tg } = useTelegram();
+//   const { tg } = useTelegram();
 
   const onChangeCountry = (e) => {
     setCountry(e.target.value);
